@@ -1,3 +1,4 @@
+#Autor: Eric Domenzain Morales
 require 'awesome_print'
 
 class User
