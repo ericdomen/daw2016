@@ -1,3 +1,4 @@
+#Autor: Eric Domenzain Morales
 require 'pry'
 
 def tip(amount)
