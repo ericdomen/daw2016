@@ -1,3 +1,4 @@
+#Autor: Eric Domenzain Morales
 require 'sqlite3'
 require 'awesome_print'
 
