@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pig.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @pig.age %>
+</p>
+
+<p>
+  <strong>With:</strong>
+  <%= @pig.with %>
+</p>
+
+<%= link_to 'Edit', edit_pig_path(@pig), class: 'button round' %> |
+<%= link_to 'Back', pigs_path, class: 'button round warning' %>
