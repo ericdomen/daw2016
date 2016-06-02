@@ -1,0 +1,32 @@
+Libro: <%= @libro.titulo %>(<%= link_to 'Regresar', new_libro_path %>)
+<hr />
+<%= form_for @prestamo, :url => {action: :create, :id => @libro.id} do |f| %>
+    Fecha de prestamo: <%= f.date_select :fecha_prestamo %><br />
+    Fecha de entrega: <%= f.date_select :fecha_entrega %><br />
+    <%= f.submit 'Registrar prestamo' %>
+<% end %>
+
+<hr />
+Lista de los prestamos<br />
+<% if @libro.prestamos.exists? %>
+    <table border="1">
+      <thead>
+      <tr>
+        <th>Fecha de prestamo</th>
+        <th>Fecha de entrega</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% for item in @libro.prestamos %>
+      <% if !item.fecha_prestamo.nil? %>
+          <tr>
+            <td><%= item.fecha_prestamo %></td>
+            <td><%= item.fecha_entrega %></td>
+          </tr>
+      <% end %>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    No hay Prestamos
+<% end %>

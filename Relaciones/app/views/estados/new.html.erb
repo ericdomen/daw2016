@@ -1,0 +1,24 @@
+<h1>Nuevo estado</h1>
+<h3>POSTGRES</h3>
+
+<%= form_for :estados, url: estados_path do |f| %>
+    <% if @estado.errors.any? %>
+    <div id="error_explanation">
+      <h2>error(es) prohibido(s) para que se guarde el estado</h2>
+      <ul>
+          <% @estado.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <p>
+      <%= f.label :nombre %><br />
+      <%= f.text_field :nombre %>
+    </p>
+    <p>
+      <%= f.label :pais %><br />
+      <%= f.text_field :pais %>
+    </p>
+      <%= f.submit 'Registrar estado' %>
+<% end %>

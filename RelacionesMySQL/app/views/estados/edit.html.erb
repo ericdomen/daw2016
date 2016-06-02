@@ -1,0 +1,49 @@
+<h1>Edición de estado</h1>
+<h3>MySQL</h3>
+
+<%= form_for :estado, url: estado_path(@estado), method: :patch do |f| %>
+    <% if @estado.errors.any? %>
+    <div id="error_explanation">
+      <h2>error(es) prohibido(s) para que se guarde el estado</h2>
+      <ul>
+          <% @estado.errors.full_messages.each do |msg| %>
+            <li><span class="[success alert secondary] [round radius] label"><%= msg %></span></li>
+          <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <div class="row">
+      <div class="small-8">
+        <div class="row">
+          <div class="small-3 columns">
+            <%= f.label :nombre, class: 'right' %><br />
+          </div>
+          <div class="small-9 columns">
+            <%= f.text_field :nombre %>
+          </div>
+          <div class="small-3 columns">
+            <%= f.label :pais %><br />
+          </div>
+          <div class="small-9 columns">
+            <%= f.text_field :pais %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-6 columns">
+        <div class="row collapse prefix-radius">
+          <div class="small-9 columns">
+            <%= f.submit 'Registrar estado', class: 'button round success' %>
+          </div>
+        </div>
+      </div>
+      <div class="large-6 columns">
+        <div class="row collapse postfix-radius">
+          <div class="small-9 columns">
+            <%= link_to 'cancelar', estados_path, class: 'button round alert' %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

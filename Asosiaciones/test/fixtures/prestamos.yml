@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fecha_prestamo: 2016-06-01
+  fecha_entrega: 2016-06-01
+  libro_id: 1
+
+two:
+  fecha_prestamo: 2016-06-01
+  fecha_entrega: 2016-06-01
+  libro_id: 1
