@@ -1,0 +1,37 @@
+<% if notice != "" || notice != nil%>
+    <div class="alert alert-success">
+      <strong id="notice"><%= notice %></strong>
+    </div>
+<%end%>
+<p>
+  <strong>Text:</strong>
+  <%= @question.text %>
+</p>
+<h4>Choices</h4>
+<ul>
+  <% @question.choices.find_each do |choice| %>
+      <li>
+        <%= choice.text %>
+        <% if choice.correct == 1 %> (Correct) <% end %>
+  <%= form_tag({:controller => 'choices', :action => 'destroy'}) do %>
+      <%= hidden_field_tag :question, @question.id %>
+      <%= hidden_field_tag :choice, choice.id %>
+      <%= submit_tag 'Delete', class: 'btn btn-danger' %>
+  <% end %>
+  </li>
+  <% end %>
+</ul>
+<h5>New Chooice</h5>
+<%= form_tag({:controller => 'choices', :action => 'create'}) do %>
+    <%= hidden_field_tag :question, @question.id %>
+    <%= label_tag :text, 'Text' %><br />
+    <%= text_field_tag :text %><br />
+    <strong>Correct </strong><%= check_box_tag :correct %><br />
+    <br />
+    <%= submit_tag 'create', class: 'btn btn-success' %>
+<% end %>
+<%= link_to 'Edit', edit_question_path(@question), class: 'btn btn-warning' %>
+<%= link_to 'Back', questions_path, class: 'btn btn-default' %>
+<% content_for(:title) do %>
+    Questions Details
+<%end%>

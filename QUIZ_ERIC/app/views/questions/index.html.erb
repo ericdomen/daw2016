@@ -1,0 +1,34 @@
+<h1>Linting questions</h1>
+<p>Total: <span class="badge"><%= @questions.size %></span></p>
+<p><%= link_to'New Question', new_question_path, class: 'btn btn-success' %></p>
+<table class="table table-striped table-hover">
+  <tr>
+    <th>Text</th>
+    <th>Choices</th>
+    <th colspan="3">Opciones</th>
+  </tr>
+  <% @questions.each do |question| %>
+  <tr>
+    <td><%= question.text %></td>
+    <td>
+      <ul>
+        <% question.choices.each do |choice| %>
+        <li>
+          <% if choice.correct == 1 %>
+              <p class="bg-success"><strong><%= choice.text %></strong></p>
+          <%else%>
+              <p class="bg-danger"><%= choice.text %></p>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </td>
+    <td><%= link_to '', question, class: 'fa fa-eye fa-2x' %></td>
+    <td><%= link_to '', edit_question_path(question), class: 'fa fa-pencil fa-2x' %></td>
+    <td><%= link_to '', question, class: 'fa fa-times-circle text-danger fa-2x',:confirm => 'Estas seguro ?', :method => :delete %></td>
+  </tr>
+      <% end %>
+</table>
+<% content_for(:title) do %>
+All questions
+<% end %>
